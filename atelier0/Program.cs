@@ -1,5 +1,5 @@
 ﻿using AM.ApplicationCore;
-
+using AM.ApplicationCore.Services;
 
 namespace atelier0
 {
@@ -86,6 +86,50 @@ namespace atelier0
             staff.PassengerType();
             Traveller traveller = new Traveller();
             traveller.PassengerType();
+
+            /*ArrayList list= new ArrayList();
+            list.Add(10);
+            list.Add("ABC");
+            list.Add('t');
+
+            for (int i = 0; i < list.Count ; i++)
+            {
+                System.Console.WriteLine(list[i]);
+            }
+
+
+            foreach (var item in list)
+            {
+                System.Console.WriteLine(item);
+            }
+
+            List<Passenger> list2= new List<Passenger>();
+            list2.Add(new Passenger() { BirthDate = DateTime.Now, FirstName="Foulen",LastName="Fouleni" });
+
+            List<Passenger> list3= new List<Passenger>()
+            {
+                new () {BirthDate = DateTime.Now, FirstName="Foulen",LastName="Fouleni"},
+                new Passenger() {BirthDate = DateTime.Now, FirstName="Foulen2",LastName="Fouleni2"}
+            };
+
+            List<Traveller> list4= new List<Traveller>()
+            {
+                new () {BirthDate = DateTime.Now, Nationality="TN"}
+            };
+            List<Staff> list5= new List<Staff>()
+            {
+                new () {BirthDate = DateTime.Now, PasseportNumber="78946413TN"}
+            };
+
+            //list3.AddRange(list4);
+
+            list3 = new List<Passenger>(list4);*/
+
+
+            //tp2
+            ServiceFlight serviceFlight = new ServiceFlight();
+
+            serviceFlight.Flights = TestData.Flights;
         }
     }
 }
