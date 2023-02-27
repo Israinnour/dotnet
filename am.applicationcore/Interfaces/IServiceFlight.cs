@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace AM.ApplicationCore.Interfaces
 {
-    internal interface IServiceFlight
+    public interface IServiceFlight
     {
+
+
+        //IEnumerable<IGrouping<string, Flight>> DestinationGroupedFlights();
+        //IEnumerable<Traveller> SeniorTravellers(Flight flight);
+
     }
 }

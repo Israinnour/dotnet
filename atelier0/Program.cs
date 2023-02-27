@@ -1,5 +1,6 @@
 ﻿using AM.ApplicationCore;
 using AM.ApplicationCore.Services;
+using System.Security.Cryptography.X509Certificates;
 
 namespace atelier0
 {
@@ -130,6 +131,40 @@ namespace atelier0
             ServiceFlight serviceFlight = new ServiceFlight();
 
             serviceFlight.Flights = TestData.Flights;
+
+            //int x = 10;
+            //var y =x.Add(10);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         }
+        
+       
+
     }
 }

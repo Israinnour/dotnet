@@ -1,14 +1,18 @@
-﻿using System;
+﻿using AM.ApplicationCore.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace AM.ApplicationCore.Services
 {
-    public class ServiceFlight
+    public class ServiceFlight 
     {
         public List<Flight> Flights { get; set; } = new List<Flight>();
+
+
 
         List<DateTime> GetFlightDatess(string destination)
         {
@@ -122,6 +126,7 @@ namespace AM.ApplicationCore.Services
         {
             var query = from f in Flights
                         where f.Plane.PlaneId == plane.PlaneId
+
                         select new { f.FlightDate, f.Destination };
             foreach (var item in query)
             {
@@ -154,6 +159,7 @@ namespace AM.ApplicationCore.Services
                         where (f.Destination == destination)
                         select f.EstimatedDuration;
             return query.Average();
+
         }
         public IEnumerable<Flight> OrderedDurationFlights()
         {
@@ -165,26 +171,62 @@ namespace AM.ApplicationCore.Services
             // Flights.OrderByDescending(f => f.EstimatedDuration);
         }
 
-        public IList<Traveller> SeniorTravellers(Flight flight)
+        public IEnumerable<Traveller> vvv(Flight flight)
         {
             return (from p in flight.Passengers.OfType<Traveller>()
                     orderby p.BirthDate
-                    select p).Take(3).ToList();
+                    select p).Take(3);
 
-        }
+        // var query = flight.Passengers.
 
-        public void DestinationGroupedFlights()
+    }
+
+
+        //blic IEnumerable<IGrouping<string, Flight>> DestinationGroupedFlights()
+      //public IEnumerable<Flight> DestinationGroupedFlights()
+      //      {
+      //          var result = from f in Flights
+      //                       group f by f.Destination;
+      //      //r result = Flights.GroupBy(f => f.Destination);
+      //      foreach (var item in result)
+      //      {
+      //          Console.WriteLine(item.Key);
+      //          foreach (var f in item)
+      //          {
+      //              Console.WriteLine(f.FlightDate);
+      //          }
+      //         //eturn result;
+      //      }
+      //  }
+
+        public Action<Plane> FlightDetailsDel { get; set; }
+
+        public Func<string, double> DurationAverageDel { get; set; }
+        public ServiceFlight()
         {
-            var result = from fl in Flights
-                         group fl by fl.Destination;
-            foreach (var grp in result)
+            //FlightDetailsDel = ShowFlightDetails;HJDKf,
+
+            //DurationAverageDel = DurationAverage;
+            FlightDetailsDel = plane =>
+        {
+            var query = from f in Flights
+                        where f.Plane.PlaneId == plane.PlaneId
+                        //where f.Plane == plane
+                        select new { f.FlightDate, f.Destination };
+            foreach (var item in query)
             {
-                Console.WriteLine(grp.Key);
-                foreach (var flight in grp)
-                {
-                    Console.WriteLine(flight);
-                }
+                Console.WriteLine(item.Destination + item.FlightDate);
             }
+
+        };
+
+            DurationAverageDel = destination =>
+        {
+            var query = from f in Flights
+                        where (f.Destination == destination)
+                        select f.EstimatedDuration;
+            return query.Average();
+        };
         }
     }
 }
