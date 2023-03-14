@@ -1,5 +1,6 @@
 ﻿using AM.ApplicationCore;
 using AM.ApplicationCore.Services;
+using AM.Infrastructure;
 using System.Security.Cryptography.X509Certificates;
 
 namespace atelier0
@@ -136,9 +137,31 @@ namespace atelier0
             //var y =x.Add(10);
 
 
+            var am = new AMContext();
+            foreach (var item in am.Flights.ToList())
+            {
+                Console.WriteLine("afficher item " +item.FlightId +item.Plane.Capacity);
 
+            }
+           
 
+            //am.Flights.Add(new Flight)
+            //    {
 
+            //        Departure = "tunis",
+            //        Destination = "Sousse",
+            //        FlightDate =new DateTime(2002,2,2),
+            //        EffectiveArrival = DateTime.Now,
+            //        EstimatedDuration =1,
+            //        Plane = new Plane()
+            //        {
+            //            Capacity = 1,
+            //            ManufactureDate = DateTime.Now,
+            //            PlaneType= PlaneType.Airbus,
+            //        }
+            //    }
+
+            //am.SaveChanges();
 
 
 

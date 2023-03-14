@@ -20,6 +20,8 @@ namespace AM.ApplicationCore
         public PlaneType PlaneType { get; set; }
         public virtual List<Flight> Flights { get; set; }
 
+        public virtual List<Seat> Seats { get; set; }
+
         public Plane(int capacity, DateTime manufactureDate,  PlaneType planeType)
         {
             Capacity = capacity;

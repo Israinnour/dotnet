@@ -19,6 +19,9 @@ namespace AM.Infrastructure
         public DbSet<Traveller>Travellers{ get; set; }
 
         public DbSet<Plane>Planes{ get; set; }
+        public DbSet<Section> Sections { get; set; }
+        public DbSet<Seat> Seats { get; set; }
+        public DbSet<Reservation> Reservations { get; set; }
 
 
         protected override void OnConfiguring
@@ -26,14 +29,19 @@ namespace AM.Infrastructure
         {
             optionsBuilder.UseSqlServer(@"data source= (localdb)\mssqllocaldb;"
           + "initial catalog= israneji; integrated security =true");
+            optionsBuilder.UseLazyLoadingProxies();
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
             //config fluentAPI
             modelBuilder.ApplyConfiguration(new PassengerConfiguration());
             modelBuilder.ApplyConfiguration(new FlightConfiguration());
-            modelBuilder.ApplyConfiguration(new PlaneConfiguration());  
+            modelBuilder.ApplyConfiguration(new PlaneConfiguration());
+            modelBuilder.ApplyConfiguration(new SeatConfiguration());
+            modelBuilder.ApplyConfiguration(new SectionConfiguration());
+            modelBuilder.ApplyConfiguration(new ReservationConfiguration());
         }
     }
 }

@@ -19,7 +19,7 @@ namespace AM.ApplicationCore
         public int EstimatedDuration { get; set; }
 
         //[ForeignKey("PlaneId")]
-        public  Plane? Plane { get; set; }
+        public virtual Plane? Plane { get; set; }
         [ForeignKey("Plane")]
         public int? PlaneFK { get; set; }//prop clé etranger
         public virtual List<Passenger> Passengers { get; set; }

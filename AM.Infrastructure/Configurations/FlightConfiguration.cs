@@ -18,7 +18,7 @@ namespace AM.Infrastructure.Configurations
             builder.ToTable("vols");
             //Configurations one to many flight * et plane 1 
             builder.HasOne(f=>f.Plane).WithMany(p=>p.Flights).HasForeignKey(f=> f.PlaneFK).OnDelete(DeleteBehavior.SetNull);
-            //Configurations one to many flight * et passenger *
+            //Configurations many to many flight * et passenger *
 
             builder.HasMany(f => f.Passengers).WithMany(p => p.Flights).UsingEntity(pf => pf.ToTable("myPassenger"));
         }

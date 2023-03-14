@@ -26,6 +26,7 @@ namespace AM.ApplicationCore
         [RegularExpression("[0-9]{8}")]
         public long TelNumber { get; set; }
         public virtual List<Flight> Flights { get; set; }
+        public virtual List<Reservation> Reservations { get; set; }
 
 
         public Passenger() { }
